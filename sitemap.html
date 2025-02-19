@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Sitemap</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+
+    /* Sitemap Section */
+    .sitemap-section {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    .sitemap-section h2 {
+      text-align: center;
+      color: #0082e6;
+      margin-bottom: 20px;
+    }
+
+    .sitemap-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sitemap-list li {
+      margin-bottom: 10px;
+    }
+
+    .sitemap-list li a {
+      text-decoration: none;
+      color: #007BFF;
+      font-size: 18px;
+      display: block;
+      padding: 10px;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .sitemap-list li a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .sitemap-list .dropdown-menu {
+      padding-left: 20px;
+      margin-top: 5px;
+    }
+
+    .sitemap-list .dropdown-menu ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sitemap-list .dropdown-menu li {
+      margin-bottom: 5px;
+    }
+
+    .sitemap-list .dropdown-menu li a {
+      font-size: 16px;
+      color: #555;
+    }
+
+    .sitemap-list .dropdown-menu li a:hover {
+      color: #007BFF;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .sitemap-section {
+        margin: 20px;
+        padding: 15px;
+      }
+
+      .sitemap-list li a {
+        font-size: 16px;
+      }
+
+      .sitemap-list .dropdown-menu li a {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Sitemap Section -->
+  <section class="sitemap-section">
+    <h2>Sitemap</h2>
+    <ul class="sitemap-list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#Gallery">Gallery</a></li>
+      <li>
+        <a href="#">Category</a>
+        <div class="dropdown-menu">
+          <ul>
+            <li><a href="#Luxury">Luxury</a></li>
+            <li><a href="#Sailing">Sailing</a></li>
+            <li><a href="#Fishing">Fishing</a></li>
+          </ul>
+        </div>
+      </li>
+      <li><a href="#about-us">About</a></li>
+      <li><a href="#contact-us">Contact</a></li>
+      <li><a href="#feedback-section">Feedback</a></li>
+    </ul>
+  </section>
+</body>
+</html>

@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Marina Fleet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <!-- Font Awesome Link for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
+<script>
+  
+  
+  function openModal(image) {
+    const modal = document.getElementById('myModal');
+    const modalImage = document.getElementById('modalImage');
+    modalImage.src = image.src;
+    modal.style.display = 'flex';
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('myModal');
+    modal.style.display = 'none';
+  }
+ 
+  function toggleDropdown() {
+    const dropdown = document.querySelector('.dropdown-menu');
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
+
+    dropdown.classList.toggle('show'); // Toggle visibility
+    dropdownToggle.classList.toggle('active'); // Rotate caret icon
+  }
+  
+</script>
+<script>
+  function handleCardClick(event, modallId) {
+    const target = event.target;
+    if (!target.classList.contains('add-to-cart')) {
+      openmodall(modallId);
+    }
+  }
+
+  function openmodall(modallId) {
+    document.getElementById(`modall${modallId}`).style.display = 'flex';
+  }
+
+  function closemodall(modallId) {
+    document.getElementById(`modall${modallId}`).style.display = 'none';
+  }
+
+  function downloadPdf(modallId) {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    const modallContent = document.getElementById(`modall${modallId}`).querySelector('.modall-content');
+    const imageUrl = modallContent.querySelector('img').src;
+    const description = modallContent.querySelector('h3').innerText;
+
+    doc.text(`Details for ${description}`, 10, 10);
+    doc.addImage(imageUrl, 'JPEG', 10, 20, 180, 120);
+    doc.save(`${description}_details.pdf`);
+  }
+</script>
+
+</head>
+
+<body>
+  
+  
+  <nav id="nav">
+    <!-- Checkbox for toggling menu -->
+    <input type="checkbox" id="check">
+
+    <!-- Menu icon -->
+    <label for="check" class="checkbtn">
+      <i class="fas fa-bars"></i>
+    </label>
+
+    <!-- Site logo -->
+    <label class="logo"><img src="Images/Logo/weblogo2 croped.jpg" width="200px" alt=""></label>
+
+    <!-- Navigation links -->
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#Gallery">Gallery</a></li>
+      <li><a href="#">Category <i class="fas fa-caret-down"></i></a>
+        <div class="dropdown-menu">
+          <ul>
+            <li><a href="#Luxury">Luxury</a></li>
+            <li><a href="#Sailing">Sailing</a></li>
+            <li><a href="#Fishing">Fishing</a></li>
+          </ul>
+        </div>
+      </li>
+      <li><a href="#about-us">About</a></li>
+      <li><a href="#contact-us">Contact</a></li>
+      <li><a href="#feedback-section">Feedback</a></li>
+    </ul>
+    
+  </nav>
+  <div id="carouselExampleIndicators" class="carousel slide">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="Images/silder images/Group 1.png" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="Images/silder images/Group 2.png" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="Images/silder images/Group 3.png" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <section id="about-us" >
+    <h1 >About Us</h1>
+    <p >
+      Welcome to Marina Fleet, your premier online destination for buying luxurious yachts. Our mission is to provide you with the finest selection of yachts, paired with an exceptional customer experience. With a passion for the open seas and a commitment to quality, we are here to make your dreams a reality.
+    </p>
+    <div class="owners">
+      <div class="owner" >
+        <img src="Images/About us images/Muzzamil1.jpg" alt="Photo of Muzammil Ahmed Jameel">
+        <h3>Muzammil Ahmed Jameel</h3>
+      </div>
+      <div class="owner" >
+        <img src="Images/About us images/Asfar.jpg" alt="Photo of Muhammad Asfar Uz Zaman Khan">
+        <h3>Muhammad Asfar Uz Zaman Khan</h3>
+      </div>
+      <div class="owner" >
+        <img src="Images/About us images/Tasbeell.jpg" alt="Photo of Tasbeel Ali">
+        <h3> Syed Tasbeel Ali</h3>
+      </div>
+    </div>
+  </section>
+</section>
+<section id="Luxury">
+<div class="gallery-heading"><h1> Luxury Yacht</h1></div>
+<div class="luxuryCards">
+  <div class="card" onclick="handleCardClick(event, 1)">
+    <img src="Images/Luxury images/g1.jpeg" alt="Card 1">
+    <h3>Tangerine Majesty</h3>
+    <p>Tap of more details</p>
+    <div class="price">$6,000,000</div>
+    <button class="add-to-cart" onclick="event.stopPropagation()">Add to Cart</button>
+  </div>
+  <div class="card" onclick="handleCardClick(event, 2)">
+    <img src="Images/Luxury images/g2.jpeg" alt="Card 2">
+    <h3>Violet Reverie</h3>
+    <p>Tap of more details</p>
+    <div class="price">$6,000,000</div>
+    <button class="add-to-cart" onclick="event.stopPropagation()">Add to Cart</button>
+  </div>
+  <div class="card" onclick="handleCardClick(event, 3)">
+    <img src="Images/Luxury images/g3.jpeg" alt="Card 3">
+    <h3>Midnight Ember</h3>
+    <p>Tap of more details</p>
+    <div class="price">$6,000,000</div>
+    <button class="add-to-cart" onclick="event.stopPropagation()">Add to Cart</button>
+  </div>
+  <div class="card" onclick="handleCardClick(event, 4)">
+    <img src="Images/Luxury images/g4.jpeg" alt="Card 4">
+    <h3>Aurora Voyage</h3>
+    <p>Tap of more details</p>
+    <div class="price">$5,500,000</div>
+    <button class="add-to-cart" onclick="event.stopPropagation()">Add to Cart</button>
+  </div>
+  <div class="card" onclick="handleCardClick(event, 5)">
+    <img src="Images/Luxury images/g5.jpeg" alt="Card 1">
+    <h3>Rosé Horizon</h3>
+    <p>Tap of more details</p>
+    <div class="price">$5,500,000</div>
+    <button class="add-to-cart" onclick="event.stopPropagation()">Add to Cart</button>
+  </div>
+  <div class="card" onclick="handleCardClick(event, 6)">
+    <img src="Images/Luxury images/g6.jpeg" alt="Card 2">
+    <h3>Forest Drift</h3>
+    <p>Tap of more details</p>
+    <div class="price">$5,500,000</div>
+    <button class="add-to-cart" onclick="event.stopPropagation()">Add to Cart</button>
+  </div>
+  <div class="card" onclick="handleCardClick(event, 7)">
+    <img src="Images/Luxury images/g7.jpeg" alt="Card 3">
+    <h3>Black Tie Wave</h3>
+    <p>Tap of more details</p>
+    <div class="price">$5,000,000</div>
+    <button class="add-to-cart" onclick="event.stopPropagation()">Add to Cart</button>
+  </div>
+  <div class="card" onclick="handleCardClick(event, 8)">
+    <img src="Images/Luxury images/g8.jpeg" alt="Card 4">
+    <h3>Red Mirage</h3>
+    <p>Tap of more details</p>
+    <div class="price">$5,000,000</div>
+    <button class="add-to-cart" onclick="event.stopPropagation()">Add to Cart</button>
+  </div>
+  <div class="card" onclick="handleCardClick(event, 9)">
+    <img src="Images/Luxury images/g9.jpeg" alt="Card 1">
+    <h3>Midnight Sun</h3>
+    <p>Tap of more details</p>
+    <div class="price">$5,000,000</div>
+    <button class="add-to-cart" onclick="event.stopPropagation()">Add to Cart</button>
+  </div>
+  <div class="card" onclick="handleCardClick(event, 10)">
+    <img src="Images/Luxury images/g10.jpeg" alt="Card 2">
+    <h3>Maple Glory</h3>
+    <p>Tap of more details</p>
+    <div class="price">4,000,000,</div>
+    <button class="add-to-cart" onclick="event.stopPropagation()">Add to Cart</button>
+  </div>
+  <div class="card" onclick="handleCardClick(event, 11)">
+    <img src="Images/Luxury images/g11.jpeg" alt="Card 3">
+    <h3>Sunbeam Serenity</h3>
+    <p>Tap of more details</p>
+    <div class="price">4,000,000,</div>
+    <button class="add-to-cart" onclick="event.stopPropagation()">Add to Cart</button>
+  </div>
+  <div class="card" onclick="handleCardClick(event, 12)">
+    <img src="Images/Luxury images/g12.jpeg" alt="Card 4">
+    <h3>Ocean Sky</h3>
+    <p>Tap of more details</p>
+    <div class="price">4,000,000</div>
+    <button class="add-to-cart" onclick="event.stopPropagation()">Add to Cart</button>
+  </div>
+</div>
+</section>
+  
+
+  <!-- modalls -->
+  <div class="modall" id="modall1">
+    <div class="modall-content">
+      <span class="close" onclick="closemodall(1)">&times;</span>
+      <img src="Images/Luxury images/g1.jpeg" alt="modall 1">
+      <div class="modall-buttons">
+        <h3>Tangerine Majesty</h3>
+        <span class="download-icon" onclick="downloadPdf(1)"><img src="Images/downlaod image.png" alt=""></span>
+      </div>
+      <div class="modall-overview">The Tangerine Majesty is a bold and vibrant orange luxury yacht that exudes sophistication and charm.
+        
+        </div>
+    </div>
+  </div>
+  <div class="modall" id="modall2">
+    <div class="modall-content">
+      <span class="close" onclick="closemodall(2)">&times;</span>
+      <img src="Images/Luxury images/g2.jpeg" alt="modall 2">
+      <div class="modall-buttons">
+        <h3>Violet Reverie</h3>
+        <span class="download-icon" onclick="downloadPdf(2)"><img src="Images/downlaod image.png" alt=""></span>
+      </div>
+      <div class="modall-overview">The Violet Reverie is a striking purple luxury yacht that redefines elegance on the open seas.
+
+
+        </div>
+    </div>
+  </div>
+  <div class="modall" id="modall3">
+    <div class="modall-content">
+      <span class="close" onclick="closemodall(3)">&times;</span>
+      <img src="Images/Luxury images/g3.jpeg" alt="modall 3">
+      <div class="modall-buttons">
+        <h3>Midnight Ember</h3>
+        <span class="download-icon" onclick="downloadPdf(3)"><img src="Images/downlaod image.png" alt=""></span>
+      </div>
+      <div class="modall-overview">The Midnight Ember is a sleek and enigmatic black luxury yacht that embodies elegance and power. 
+
+    </div>
+    </div>
+  </div>
+  <div class="modall" id="modall4">
+    <div class="modall-content">
+      <span class="close" onclick="closemodall(4)">&times;</span>
+      <img src="Images/Luxury images/g4.jpeg" alt="modall 4">
+      <div class="modall-buttons">
+        <h3>Aurora Voyage</h3>
+        <span class="download-icon" onclick="downloadPdf(4)"><img src="Images/downlaod image.png" alt=""></span>
+      </div>
+      <div class="modall-overview"> The Aurora Voyage is a stunning luxury yacht painted in vibrant shades of blue and red, inspired by the brilliance of the northern lights.
+
+  
+        </div>
+    </div>
+  </div>
+  <!-- modalls -->
+<div class="modall" id="modall5">
+  <div class="modall-content">
+    <span class="close" onclick="closemodall(5)">&times;</span>
+    <img src="Images/Luxury images/g5.jpeg" alt="modall 5">
+    <div class="modall-buttons">
+      <h3>Rosé Horizon</h3>
+      <span class="download-icon" onclick="downloadPdf(5)"><img src="Images/downlaod image.png" alt=""></span>
+    </div>
+    <div class="modall-overview">The Rosé Horizon is a breathtaking luxury yacht wrapped in a soft, sophisticated pink hue, radiating elegance and charm.
+
+     </div>
+  </div>
+</div>
+<div class="modall" id="modall6">
+  <div class="modall-content">
+    <span class="close" onclick="closemodall(6)">&times;</span>
+    <img src="Images/Luxury images/g6.jpeg" alt="modall 6">
+    <div class="modall-buttons">
+      <h3>Forest Drift</h3>
+      <span class="download-icon" onclick="downloadPdf(6)"><img src="Images/downlaod image.png" alt=""></span>
+    </div>
+    <div class="modall-overview">The Forest Drift is a stunning green luxury yacht inspired by the tranquility and beauty of nature. 
+
+    </div>
+  </div>
+</div>
+<div class="modall" id="modall7">
+  <div class="modall-content">
+    <span class="close" onclick="closemodall(7)">&times;</span>
+    <img src="Images/Luxury images/g7.jpeg" alt="modall 7">
+    <div class="modall-buttons">
+      <h3>Black Tie Wave</h3>
+      <span class="download-icon" onclick="downloadPdf(7)"><img src="Images/downlaod image.png" alt=""></span>
+    </div>
+    <div class="modall-overview">The Black Tie Wave is a sophisticated black and white luxury yacht that exudes timeless elegance and modern luxury. 
+
+   </div>
+  </div>
+</div>
+<div class="modall" id="modall8">
+  <div class="modall-content">
+    <span class="close" onclick="closemodall(8)">&times;</span>
+    <img src="Images/Luxury images/g8.jpeg" alt="modall 8">
+    <div class="modall-buttons">
+      <h3>Red Mirage</h3>
+      <span class="download-icon" onclick="downloadPdf(8)"><img src="Images/downlaod image.png" alt=""></span>
+    </div>
+    <div class="modall-overview">The Red Mirage is a striking luxury yacht that commands attention with its bold, red exterior and sleek, aerodynamic design. 
+</div>
+  </div>
+</div>
+<div class="modall" id="modall9">
+  <div class="modall-content">
+    <span class="close" onclick="closemodall(9)">&times;</span>
+    <img src="Images/Luxury images/g9.jpeg" alt="modall 9">
+    <div class="modall-buttons">
+      <h3>Midnight Sun</h3>
+      <span class="download-icon" onclick="downloadPdf(9)"><img src="Images/downlaod image.png" alt=""></span>
+    </div>
+    <div class="modall-overview">The Midnight Sun is a bold, black and yellow luxury yacht that exudes a sense of power and sophistication. 
+
+    </div>
+  </div>
+</div>
+<div class="modall" id="modall10">
+  <div class="modall-content">
+    <span class="close" onclick="closemodall(10)">&times;</span>
+    <img src="Images/Luxury images/g10.jpeg" alt="modall 10">
+    <div class="modall-buttons">
+      <h3>Maple Glory</h3>
+      <span class="download-icon" onclick="downloadPdf(10)"><img src="Images/downlaod image.png" alt=""></span>
+    </div>
+    <div class="modall-overview">
+
+      Maple Glory is a sleek, brown-colored yacht blending elegance and comfort. With spacious interiors and modern amenities.</div>
+  </div>
+</div>
+<div class="modall" id="modall11">
+  <div class="modall-content">
+    <span class="close" onclick="closemodall(11)">&times;</span>
+    <img src="Images/Luxury images/g11.jpeg" alt="modall 11">
+    <div class="modall-buttons">
+      <h3>Sunbeam Serenity</h3>
+      <span class="download-icon" onclick="downloadPdf(11)"><img src="Images/downlaod image.png" alt=""></span>
+    </div>
+    <div class="modall-overview">
+      Sunbeam Serenity is a vibrant yellow yacht designed for luxury and relaxation. </div>
+  </div>
+</div>
+<div class="modall" id="modall12">
+  <div class="modall-content">
+    <span class="close" onclick="closemodall(12)">&times;</span>
+    <img src="Images/Luxury images/g12.jpeg" alt="modall 12">
+    <div class="modall-buttons">
+      <h3>Ocean Sky</h3>
+      <span class="download-icon" onclick="downloadPdf(12)"><img src="Images/downlaod image.png" alt=""></span>
+    </div>
+    <div class="modall-overview">The Ocean Sky is a magnificent blue luxury yacht that captures the essence of tranquility and grandeur. 
+
+</div>
+  </div>
+</div>
+</section>
+<section id="Sailing">
+<div class="gallery-heading"><h1> Sailing yacht</h1></div>
+<div class="luxuryCards">
+  <div class="card" onclick="handleCardClick(event, 13)">
+    <img src="Images/Sailing images/s1.jpeg" alt="Card 13">
+    <h3>Azure Drift</h3>
+    <p>Tap of more details</p>
+    <div class="price">$700,000</div>
+    <button class="add-to-cart" onclick="event.stopPropagation()">Add to Cart</button>
+  </div>
+  <div class="card" onclick="handleCardClick(event, 14)">
+    <img src="Images/Sailing images/s2.jpeg" alt="Card 14">
+    <h3>Solar Flare</h3>
+    <p>Tap of more details</p>
+    <div class="price">$700,000</div>
+    <button class="add-to-cart" onclick="event.stopPropagation()">Add to Cart</button>
+  </div>
+  <div class="card" onclick="handleCardClick(event, 15)">
+    <img src="Images/Sailing images/s3.jpeg" alt="Card 3">
+    <h3>Lagoon Spirit</h3>
+    <p>Tap of more details</p>
+    <div class="price">$700,000</div>
+    <button class="add-to-cart" onclick="event.stopPropagation()">Add to Cart</button>
+  </div>
+  <div class="card" onclick="handleCardClick(event, 16)">
+    <img src="Images/Sailing images/s4.jpeg" alt="Card 4">
+    <h3>Iron Tide</h3>
+    <p>Tap of more details</p>
+    <div class="price">$620,000</div>
+    <button class="add-to-cart" onclick="event.stopPropagation()">Add to Cart</button>
+  </div>
+  <div class="card" onclick="handleCardClick(event, 17)">
+    <img src="Images/Sailing images/s5.jpeg" alt="Card 1">
+    <h3>Frosted Journey</h3>
+    <p>Tap of more details</p>
+    <div class="price">$620,000</div>
+    <button class="add-to-cart" onclick="event.stopPropagation()">Add to Cart</button>
+  </div>
+  <div class="card" onclick="handleCardClick(event, 18)">
+    <img src="Images/Sailing images/s6.jpeg" alt="Card 2">
+    <h3>Lemon Leaf</h3>
+    <p>Tap of more details</p>
+    <div class="price">$620,000</div>
+    <button class="add-to-cart" onclick="event.stopPropagation()">Add to Cart</button>
+  </div>
+  <div class="card" onclick="handleCardClick(event, 19)">
+    <img src="Images/Sailing images/s7.jpeg" alt="Card 3">
+    <h3>Ocean Breeze</h3>
+    <p>Tap of more details</p>
+    <div class="price">$570,000</div>
+    <button class="add-to-cart" onclick="event.stopPropagation()">Add to Cart</button>
+  </div>
+  <div class="card" onclick="handleCardClick(event, 20)">
+    <img src="Images/Sailing images/s8.jpeg" alt="Card 4">
+    <h3>Cedar Sail</h3>
+    <p>Tap of more details</p>
+    <div class="price">$570,000</div>
+    <button class="add-to-cart" onclick="event.stopPropagation()">Add to Cart</button>
+  </div>
+  <div class="card" onclick="handleCardClick(event, 21)">
+    <img src="Images/Sailing images/s9.jpeg" alt="Card 1">
+    <h3>White Pearl</h3>
+    <p>Tap of more details</p>
+    <div class="price">$570,000</div>
+    <button class="add-to-cart" onclick="event.stopPropagation()">Add to Cart</button>
+  </div>
+  <div class="card" onclick="handleCardClick(event, 22)">
+    <img src="Images/Sailing images/s10.jpeg" alt="Card 2">
+    <h3>Sea Symphony</h3>
+    <p>Tap of more details</p>
+    <div class="price">$530,000</div>
+    <button class="add-to-cart" onclick="event.stopPropagation()">Add to Cart</button>
+  </div>
+  <div class="card" onclick="handleCardClick(event, 23)">
+    <img src="Images/Sailing images/s11.jpeg" alt="Card 3">
+    <h3>Noir Horizon</h3>
+    <p>Tap of more details</p>
+    <div class="price">$530,000</div>
+    <button class="add-to-cart" onclick="event.stopPropagation()">Add to Cart</button>
+  </div>
+  <div class="card" onclick="handleCardClick(event, 24)">
+    <img src="Images/Sailing images/s12.jpeg" alt="Card 4">
+    <h3>Rosewater Wave</h3>
+    <p>Tap of more details</p>
+    <div class="price">$530,000</div>
+    <button class="add-to-cart" onclick="event.stopPropagation()">Add to Cart</button>
+  </div>
+</div>
+</section>
+
+<!-- modalls -->
+<div class="modall" id="modall13">
+  <div class="modall-content">
+    <span class="close" onclick="closemodall(13)">&times;</span>
+    <img src="Images/Sailing images/s1.jpeg" alt="modall 1">
+    <div class="modall-buttons">
+      <h3>Azure Drift</h3>
+      <span class="download-icon" onclick="downloadPdf(13)"><img src="Images/downlaod image.png" alt=""></span>
+    </div>
+    <div class="modall-overview">
+      Azure Drift is an elegant sailing yacht with blue and white sails, offering a serene and unforgettable sailing experience.
+      
+      </div>
+  </div>
+</div>
+<div class="modall" id="modall14">
+  <div class="modall-content">
+    <span class="close" onclick="closemodall(14)">&times;</span>
+    <img src="Images/Sailing images/s2.jpeg" alt="modall 2">
+    <div class="modall-buttons">
+      <h3>Solar Flare</h3>
+      <span class="download-icon" onclick="downloadPdf(14)"><img src="Images/downlaod image.png" alt=""></span>
+    </div>
+    <div class="modall-overview">Solar Flare is a vibrant and dynamic sailing yacht, with striking yellow and red sails that capture the sun's energy. Built for adventure.
+
+      </div>
+  </div>
+</div>
+<div class="modall" id="modall15">
+  <div class="modall-content">
+    <span class="close" onclick="closemodall(15)">&times;</span>
+    <img src="Images/Sailing images/s3.jpeg" alt="modall 3">
+    <div class="modall-buttons">
+      <h3>Lagoon Spirit</h3>
+      <span class="download-icon" onclick="downloadPdf(15)"><img src="Images/downlaod image.png" alt=""></span>
+    </div>
+    <div class="modall-overview">
+      Lagoon Spirit is a stunning blue and green sailing yacht, offering a peaceful yet adventurous journey across the water. </div>
+  </div>
+</div>
+<div class="modall" id="modall16">
+  <div class="modall-content">
+    <span class="close" onclick="closemodall(16)">&times;</span>
+    <img src="Images/Sailing images/s4.jpeg" alt="modall 4">
+    <div class="modall-buttons">
+      <h3>Iron Tide</h3>
+      <span class="download-icon" onclick="downloadPdf(16)"><img src="Images/downlaod image.png" alt=""></span>
+    </div>
+    <div class="modall-overview"> Iron Tide is a sleek grey sailing yacht, blending elegance and strength for an unforgettable sailing experience. 
+      </div>
+  </div>
+</div>
+<div class="modall" id="modall17">
+<div class="modall-content">
+  <span class="close" onclick="closemodall(17)">&times;</span>
+  <img src="Images/Sailing images/s5.jpeg" alt="modall 5">
+  <div class="modall-buttons">
+    <h3>Frosted Journey</h3>
+    <span class="download-icon" onclick="downloadPdf(17)"><img src="Images/downlaod image.png" alt=""></span>
+  </div>
+  <div class="modall-overview">Frosted Journey is a graceful white sailing yacht, offering a smooth and serene voyage across the water. </div>
+</div>
+</div>
+<div class="modall" id="modall18">
+<div class="modall-content">
+  <span class="close" onclick="closemodall(18)">&times;</span>
+  <img src="Images/Sailing images/s6.jpeg" alt="modall 6">
+  <div class="modall-buttons">
+    <h3>Lemon Leaf</h3>
+    <span class="download-icon" onclick="downloadPdf(18)"><img src="Images/downlaod image.png" alt=""></span>
+  </div>
+  <div class="modall-overview">
+    Lemon Leaf is a vibrant green and yellow sailing yacht, capturing the essence of freshness and adventure. </div>
+</div>
+</div>
+<div class="modall" id="modall19">
+<div class="modall-content">
+  <span class="close" onclick="closemodall(19)">&times;</span>
+  <img src="Images/Sailing images/s7.jpeg" alt="modall 19">
+  <div class="modall-buttons">
+    <h3>Ocean Breeze</h3>
+    <span class="download-icon" onclick="downloadPdf(19)"><img src="Images/downlaod image.png" alt=""></span>
+  </div>
+  <div class="modall-overview">Ocean Breeze is a serene blue sailing yacht, crafted for smooth sailing and peaceful voyages. </div>
+</div>
+</div>
+<div class="modall" id="modall20">
+<div class="modall-content">
+  <span class="close" onclick="closemodall(20)">&times;</span>
+  <img src="Images/Sailing images/s8.jpeg" alt="modall 8">
+  <div class="modall-buttons">
+    <h3>Cedar Sail</h3>
+    <span class="download-icon" onclick="downloadPdf(20)"><img src="Images/downlaod image.png" alt=""></span>
+  </div>
+  <div class="modall-overview">
+    Cedar Sail is a timeless brown sailing yacht, offering a perfect blend of elegance and nature-inspired charm. </div>
+</div>
+</div>
+<div class="modall" id="modall21">
+<div class="modall-content">
+  <span class="close" onclick="closemodall(21)">&times;</span>
+  <img src="Images/Sailing images/s9.jpeg" alt="modall 9">
+  <div class="modall-buttons">
+    <h3>White Pearl</h3>
+    <span class="download-icon" onclick="downloadPdf(21)"><img src="Images/downlaod image.png" alt=""></span>
+  </div>
+  <div class="modall-overview">White Pearl is a sleek and elegant white sailing yacht, embodying grace and serenity on the water. </div>
+</div>
+</div>
+<div class="modall" id="modall22">
+<div class="modall-content">
+  <span class="close" onclick="closemodall(22)">&times;</span>
+  <img src="Images/Sailing images/s10.jpeg" alt="modall 10">
+  <div class="modall-buttons">
+    <h3>Sea Symphony</h3>
+    <span class="download-icon" onclick="downloadPdf(22)"><img src="Images/downlaod image.png" alt=""></span>
+  </div>
+  <div class="modall-overview">Sea Symphony is a stunning blue sailing yacht, harmonizing elegance and performance on the open water. </div>
+</div>
+</div>
+<div class="modall" id="modall23">
+<div class="modall-content">
+  <span class="close" onclick="closemodall(23)">&times;</span>
+  <img src="Images/Sailing images/s11.jpeg" alt="modall 11">
+  <div class="modall-buttons">
+    <h3>Noir Horizon</h3>
+    <span class="download-icon" onclick="downloadPdf(23)"><img src="Images/downlaod image.png" alt=""></span>
+  </div>
+  <div class="modall-overview">Noir Horizon is a striking black sailing yacht, blending boldness with sophistication on the water. </div>
+</div>
+</div>
+<div class="modall" id="modall24">
+<div class="modall-content">
+  <span class="close" onclick="closemodall(24)">&times;</span>
+  <img src="Images/Sailing images/s12.jpeg" alt="modall 12">
+  <div class="modall-buttons">
+    <h3>Rosewater Wave</h3>
+    <span class="download-icon" onclick="downloadPdf(24)"><img src="Images/downlaod image.png" alt=""></span>
+  </div>
+  <div class="modall-overview">
+    Rosewater Wave is a charming pink sailing yacht, radiating elegance and vibrancy on the water. </div>
+</div>
+</div>
+</section>
+<section id="Fishing">
+<div class="gallery-heading"><h1> Fishing Yachts</h1></div>
+<div class="luxuryCards">
+  <div class="card" onclick="handleCardClick(event, 25)">
+    <img src="Images/Fishing images/f1.jpeg" alt="Card 1">
+    <h3>Nightfall Trawler </h3>
+    <p>Tap of more details</p>
+    <div class="price">$200,000</div>
+    <button class="add-to-cart" onclick="event.stopPropagation()">Add to Cart</button>
+  </div>
+  <div class="card" onclick="handleCardClick(event, 26)">
+    <img src="Images/Fishing images/f2.jpeg" alt="Card 2">
+    <h3>Sunset Striker</h3>
+    <p>Tap of more details</p>
+    <div class="price">$200,000</div>
+    <button class="add-to-cart" onclick="event.stopPropagation()">Add to Cart</button>
+  </div>
+  <div class="card" onclick="handleCardClick(event, 27)">
+    <img src="Images/Fishing images/f3.jpeg" alt="Card 3">
+    <h3>Wave Dancer</h3>
+    <p>Tap of more details</p>
+    <div class="price">$200,000</div>
+    <button class="add-to-cart" onclick="event.stopPropagation()">Add to Cart</button>
+  </div>
+  <div class="card" onclick="handleCardClick(event, 28)">
+    <img src="Images/Fishing images/f4.jpeg" alt="Card 4">
+    <h3>Quicksilver</h3>
+    <p>Tap of more details</p>
+    <div class="price">$110,000</div>
+    <button class="add-to-cart" onclick="event.stopPropagation()">Add to Cart</button>
+  </div>
+  <div class="card" onclick="handleCardClick(event, 29)">
+    <img src="Images/Fishing images/f5.jpeg" alt="Card 1">
+    <h3>Shadowcaster</h3>
+    <p>Tap of more details</p>
+    <div class="price">$110,000</div>
+    <button class="add-to-cart" onclick="event.stopPropagation()">Add to Cart</button>
+  </div>
+  <div class="card" onclick="handleCardClick(event, 30)">
+    <img src="Images/Fishing images/f6.jpeg" alt="Card 2">
+    <h3>Deep Blue Pursuit</h3>
+    <p>Tap of more details</p>
+    <div class="price">$110,000</div>
+    <button class="add-to-cart" onclick="event.stopPropagation()">Add to Cart</button>
+  </div>
+  <div class="card" onclick="handleCardClick(event, 31)">
+    <img src="Images/Fishing images/f7.jpeg" alt="Card 3">
+    <h3>Mystic Mist</h3>
+    <p>Tap of more details</p>
+    <div class="price">$90,000</div>
+    <button class="add-to-cart" onclick="event.stopPropagation()">Add to Cart</button>
+  </div>
+  <div class="card" onclick="handleCardClick(event, 32)">
+    <img src="Images/Fishing images/f8.jpeg" alt="Card 4">
+    <h3>Sandstone Quest</h3>
+    <p>Tap of more details</p>
+    <div class="price">$90,000</div>
+    <button class="add-to-cart" onclick="event.stopPropagation()">Add to Cart</button>
+  </div>
+  <div class="card" onclick="handleCardClick(event, 33)">
+    <img src="Images/Fishing images/f9.jpeg" alt="Card 1">
+    <h3>Burning Drift</h3>
+    <p>Tap of more details</p>
+    <div class="price">$90,000</div>
+    <button class="add-to-cart" onclick="event.stopPropagation()">Add to Cart</button>
+  </div>
+  <div class="card" onclick="handleCardClick(event, 34)">
+    <img src="Images/Fishing images/f10.jpeg" alt="Card 2">
+    <h3>Ruby Wave</h3>
+    <p>Tap of more details</p>
+    <div class="price">$80,000</div>
+    <button class="add-to-cart" onclick="event.stopPropagation()">Add to Cart</button>
+  </div>
+  <div class="card" onclick="handleCardClick(event, 35)">
+    <img src="Images/Fishing images/f11.jpeg" alt="Card 3">
+    <h3>Earth & Ocean</h3>
+    <p>Tap of more details</p>
+    <div class="price">$80,000</div>
+    <button class="add-to-cart" onclick="event.stopPropagation()">Add to Cart</button>
+  </div>
+  <div class="card" onclick="handleCardClick(event, 36)">
+    <img src="Images/Fishing images/f12.jpeg" alt="Card 4">
+    <h3>Candyfloss Catcher</h3>
+    <p>Tap of more details</p>
+    <div class="price">$80,000</div>
+    <button class="add-to-cart" onclick="event.stopPropagation()">Add to Cart</button>
+  </div>
+</div>
+</section>
+
+<!-- modalls -->
+<div class="modall" id="modall25">
+  <div class="modall-content">
+    <span class="close" onclick="closemodall(25)">&times;</span>
+    <img src="Images/Fishing images/f1.jpeg" alt="modall 1">
+    <div class="modall-buttons">
+      <h3>Nightfall Trawler</h3>
+      <span class="download-icon" onclick="downloadPdf(25)"><img src="Images/downlaod image.png" alt=""></span>
+    </div>
+    <div class="modall-overview">The Nightfall Trawler is a sleek black-and-white fishing yacht, blending timeless style with high-performance for any fishing adventure.
+      </div>
+  </div>
+</div>
+<div class="modall" id="modall26">
+  <div class="modall-content">
+    <span class="close" onclick="closemodall(26)">&times;</span>
+    <img src="Images/Fishing images/f2.jpeg" alt="modall 2">
+    <div class="modall-buttons">
+      <h3>Sunset Striker</h3>
+      <span class="download-icon" onclick="downloadPdf(26)"><img src="Images/downlaod image.png" alt=""></span>
+    </div>
+    <div class="modall-overview">The Sunset Striker is a vibrant yellow-and-red fishing yacht, radiating energy and boldness. Built for thrill-seekers.
+      </div>
+  </div>
+</div>
+<div class="modall" id="modall27">
+  <div class="modall-content">
+    <span class="close" onclick="closemodall(27)">&times;</span>
+    <img src="Images/Fishing images/f3.jpeg" alt="modall 3">
+    <div class="modall-buttons">
+      <h3>Wave Dancer</h3>
+      <span class="download-icon" onclick="downloadPdf(27)"><img src="Images/downlaod image.png" alt=""></span>
+    </div>
+    <div class="modall-overview">The Wave Dancer is a sleek blue fishing yacht, built for smooth sailing and high-performance.</div>
+  </div>
+</div>
+<div class="modall" id="modall28">
+  <div class="modall-content">
+    <span class="close" onclick="closemodall(28)">&times;</span>
+    <img src="Images/Fishing images/f4.jpeg" alt="modall 4">
+    <div class="modall-buttons">
+      <h3>Quicksilver</h3>
+      <span class="download-icon" onclick="downloadPdf(28)"><img src="Images/downlaod image.png" alt=""></span>
+    </div>
+    <div class="modall-overview"> The Quicksilver is a sleek silver fishing yacht, designed for speed and precision on the water.
+      </div>
+  </div>
+</div>
+
+<div class="modall" id="modall29">
+<div class="modall-content">
+  <span class="close" onclick="closemodall(29)">&times;</span>
+  <img src="Images/Fishing images/f5.jpeg" alt="modall 5">
+  <div class="modall-buttons">
+    <h3>Shadowcaster</h3>
+    <span class="download-icon" onclick="downloadPdf(29)"><img src="Images/downlaod image.png" alt=""></span>
+  </div>
+  <div class="modall-overview">
+    The Shadowcaster is a bold black fishing yacht, designed for those who seek stealth and power on the water. </div>
+</div>
+</div>
+<div class="modall" id="modall30">
+<div class="modall-content">
+  <span class="close" onclick="closemodall(30)">&times;</span>
+  <img src="Images/Fishing images/f6.jpeg" alt="modall 6">
+  <div class="modall-buttons">
+    <h3>Deep Blue Pursuit</h3>
+    <span class="download-icon" onclick="downloadPdf(30)"><img src="Images/downlaod image.png" alt=""></span>
+  </div>
+  <div class="modall-overview">
+    The Deep Blue Pursuit is a striking blue fishing yacht, built for the serious angler. </div>
+</div>
+</div>
+<div class="modall" id="modall31">
+<div class="modall-content">
+  <span class="close" onclick="closemodall(31)">&times;</span>
+  <img src="Images/Fishing images/f7.jpeg" alt="modall 7">
+  <div class="modall-buttons">
+    <h3>Mystic Mist</h3>
+    <span class="download-icon" onclick="downloadPdf(31)"><img src="Images/downlaod image.png" alt=""></span>
+  </div>
+  <div class="modall-overview">The Mystic Mist is a sleek grey fishing yacht, designed for those who seek both elegance and performance. 
+
+  </div>
+</div>
+</div>
+<div class="modall" id="modall32">
+<div class="modall-content">
+  <span class="close" onclick="closemodall(32)">&times;</span>
+  <img src="Images/Fishing images/f8.jpeg" alt="modall 8">
+  <div class="modall-buttons">
+    <h3>Sandstone Quest</h3>
+    <span class="download-icon" onclick="downloadPdf(32)"><img src="Images/downlaod image.png" alt=""></span>
+  </div>
+  <div class="modall-overview">
+    The Sandstone Quest is a rugged brown fishing yacht, built for adventure on the open water. </div>
+</div>
+</div>
+<div class="modall" id="modall33">
+<div class="modall-content">
+  <span class="close" onclick="closemodall(33)">&times;</span>
+  <img src="Images/Fishing images/f9.jpeg" alt="modall 9">
+  <div class="modall-buttons">
+    <h3>Burning Drift</h3>
+    <span class="download-icon" onclick="downloadPdf(33)"><img src="Images/downlaod image.png" alt=""></span>
+  </div>
+  <div class="modall-overview">The Burning Drift is a bold yellow-and-red fishing yacht, designed for speed and excitement on the water. 
+
+
+
+
+
+
+
+  </div>
+</div>
+</div>
+<div class="modall" id="modall34">
+<div class="modall-content">
+  <span class="close" onclick="closemodall(34)">&times;</span>
+  <img src="Images/Fishing images/f10.jpeg" alt="modall 10">
+  <div class="modall-buttons">
+    <h3>Ruby Wave</h3>
+    <span class="download-icon" onclick="downloadPdf(34)"><img src="Images/downlaod image.png" alt=""></span>
+  </div>
+  <div class="modall-overview">The Ruby Wave is a luxurious maroon fishing yacht, blending elegance with powerful performance. 
+  </div>
+</div>
+</div>
+<div class="modall" id="modall35">
+<div class="modall-content">
+  <span class="close" onclick="closemodall(35)">&times;</span>
+  <img src="Images/Fishing images/f11.jpeg" alt="modall 11">
+  <div class="modall-buttons">
+    <h3>Earth & Ocean</h3>
+    <span class="download-icon" onclick="downloadPdf(35)"><img src="Images/downlaod image.png" alt=""></span>
+  </div>
+  <div class="modall-overview">The Earth & Ocean is a unique blue-and-brown fishing yacht, merging the beauty of land and sea. With its striking colors and exceptional performance.
+  </div>
+</div>
+</div>
+<div class="modall" id="modall36">
+<div class="modall-content">
+  <span class="close" onclick="closemodall(36)">&times;</span>
+  <img src="Images/Fishing images/f12.jpeg" alt="modall 12">
+  <div class="modall-buttons">
+    <h3>Candyfloss Catcher</h3>
+    <span class="download-icon" onclick="downloadPdf(36)"><img src="Images/downlaod image.png" alt=""></span>
+  </div>
+  <div class="modall-overview">The Candyfloss Catcher is a playful pink fishing yacht, designed to stand out with vibrant style and smooth performance. Perfect for anglers who enjoy a fun.
+  </div>
+</div>
+</div>
+</section>
+<section id="Gallery">
+  <div class="gallery-heading"><h1>Our Gallery</h1></div>
+
+  <div class="gallery">
+    <div class="gallery-item">
+      <img src="Images/Gallery Images/g1.jpeg" alt="Image 1" onclick="openModal(this)" />
+    </div>
+    <div class="gallery-item">
+      <img src="Images/Gallery Images/g2.jpeg" alt="Image 2" onclick="openModal(this)" />
+    </div>
+    <div class="gallery-item">
+      <img src="Images/Gallery Images/g3.jpeg" alt="Image 3" onclick="openModal(this)" />
+    </div>
+    <div class="gallery-item">
+      <img src="Images/Gallery Images/g4.jpeg" alt="Image 4" onclick="openModal(this)" />
+    </div>
+    <div class="gallery-item">
+      <img src="Images/Gallery Images/g5.jpeg" alt="Image 5" onclick="openModal(this)" />
+    </div>
+    <div class="gallery-item">
+      <img src="Images/Gallery Images/g6.jpeg" alt="Image 6" onclick="openModal(this)" />
+    </div>
+    <div class="gallery-item">
+      <img src="Images/Gallery Images/g7.jpeg" alt="Image 7" onclick="openModal(this)" />
+    </div>
+    <div class="gallery-item">
+      <img src="Images/Gallery Images/g8.jpeg" alt="Image 8" onclick="openModal(this)" />
+    </div>
+    <div class="gallery-item">
+      <img src="Images/Gallery Images/g9.jpeg" alt="Image 9" onclick="openModal(this)" />
+    </div>
+  </div>
+</section>
+
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <div class="close" onclick="closeModal()">
+        <span>&times;</span>
+      </div>
+      <img id="modalImage" src="" alt="Modal Image" />
+    </div>
+  </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+ 
+
+  
+
+  
+  
+  
+    <section id="contact-us">
+      <div class="container">
+        <h2>Contact Us</h2>
+        <p>We'd love to hear from you! Whether you have questions, feedback, or need assistance, feel free to reach out.</p>
+        <div class="contact-info">
+          <div class="info-item">
+            <h3><img src="Images/contactUs images/location.png" alt="" width="10px"> Address</h3>
+            <p>Marina Fleet Headquarters<br>123 Marina Drive, Coastal City, Ocean State, 56789</p>
+          </div>
+          <div class="info-item">
+            <h3><img src="Images/contactUs images/phone.png" alt=""> Phone</h3>
+            <p><a href="tel:+12345678901">+1 (234) 567-8901</a></p>
+          </div>
+          <div class="info-item">
+            <h3><img src="Images/contactUs images/email.png " alt=""> Email</h3>
+            <p><a href="mailto:info@marinafleet.com">info@marinafleet.com</a></p>
+          </div>
+          </div>
+      <form class="contact-form">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+     
+      </div>
+    </section>
+    <section id="map-section">
+    <div class="container">
+      
+      <p>Find us at our headquarters:</p>
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3620.6641537090245!2d67.1945601!3d24.841156399999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb3308369cd8379%3A0x5b54461eeca7acc8!2sAptech%20Computer%20Education%20Landhi%20Center!5e0!3m2!1sen!2s!4v1737408065353!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+  <section id="feedback-section">
+    <div class="container">
+      <h2>We Value Your Feedback</h2>
+      <p>Please share your thoughts to help us improve our services.</p>
+      <form action="#" method="post" class="feedback-form">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="rating">Rate Our Service</label>
+          <select id="rating" name="rating" required>
+            <option value="">Select Rating</option>
+            <option value="1">1 - Poor</option>
+            <option value="2">2 - Fair</option>
+            <option value="3">3 - Good</option>
+            <option value="4">4 - Very Good</option>
+            <option value="5">5 - Excellent</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="comments">Comments</label>
+          <textarea id="comments" name="comments" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Submit Feedback</button>
+      </form>
+    </div>
+  </section>
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-content">
+        <!-- Logo and Description -->
+        <div class="footer-logo">
+          <img src="Images/Logo/weblogo2 croped.jpg" alt="Marine Fleets Logo" width="300px">
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="footer-nav">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#Gallery">Gallery</a></li>
+            <li><a href="#category">Category</a></li>
+            <li><a href="#about-us">About Us</a></li>
+            <li><a href="#contact-us">Contact</a></li>
+            <li><a href="#feedback-section">Feedback</a></li>
+            <li><a href="sitemap.html">Sitemap</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="footer-contact">
+          <h3>Contact Us</h3>
+          <p>📍 123 Marina Drive, Coastal City, Ocean State</p>
+          <p>📞 <a href="tel:+12345678901">+1 (234) 567-8901</a></p>
+          <p>📧 <a href="mailto:info@marinefleets.com">info@marinefleets.com</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Marine Fleets. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <script>
+  AOS.init();
+</script>
+
+</body>
+
+</html>
